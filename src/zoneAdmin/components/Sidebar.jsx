@@ -5,6 +5,7 @@ import {
   Barcode,
   ArrowLeftRight,
   Store,
+  UserCog,
 } from "lucide-react";
 import { Link } from "react-router-dom";
 
@@ -28,7 +29,10 @@ const Sidebar = () => {
           <BarChart4 />
           <span className="ml-2">Tableau de bord</span>
         </Link>
-
+        <Link to="/admin/gestion-utilisateurs" className="flex ml-2 mb-3">
+          <UserCog />
+          <span className="ml-2">Gestion des utilisateurs</span>
+        </Link>
         <Link to="/admin/gestion-produits" className="flex ml-2 mb-3">
           <Barcode />
           <span className="ml-2">Gestion des produits</span>

@@ -19,7 +19,7 @@ const Footer = () => {
       </div>
 
       <div id="informations" className="py-5">
-        <div className="grid grid-cols-4 place-items-center">
+        <div className="grid  grid-cols-1  md:grid-cols-4 place-items-center">
           <div className="p-2 text-sm">
             <h1 className=" font-medium mb-2">E-STORE</h1>
             Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ipsum
@@ -28,17 +28,19 @@ const Footer = () => {
             dolore eligendi fuga tempore?
           </div>
 
-          <div className="flex flex-col space-y-1 text-sm ">
+          <div className=" hidden md:flex flex-col space-y-1 text-sm ">
             <a href=""> Consulter commandes</a>
             <a href=""> Consulter profil</a>
             <a href=""> Changer mot de passe</a>
           </div>
-          <div className="flex flex-col space-y-1 text-sm ">
+
+          <div className="hidden md:flex flex-col space-y-1 text-sm ">
             <a href=""> Consulter commandes</a>
             <a href=""> Consulter profil</a>
             <a href=""> Changer mot de passe</a>
           </div>
-          <div className="flex flex-col space-y-1 text-sm ">
+
+          <div className="hidden md:flex flex-col space-y-1 text-sm ">
             <a href=""> Consulter commandes</a>
             <a href=""> Consulter profil</a>
             <a href=""> Changer mot de passe</a>

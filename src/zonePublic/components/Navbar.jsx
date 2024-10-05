@@ -1,19 +1,23 @@
-import { Hexagon, ShoppingBag, LogIn } from "lucide-react";
+import { Hexagon, ShoppingBag, LogIn, Menu } from "lucide-react";
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { deleteUser } from "../../features/auth/authSlice";
 import { useNavigate, Link } from "react-router-dom";
+import MobileDrawer from "./MobileDrawer";
 
 const Navbar = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { user } = useSelector((state) => state.auth);
   const [visibleUserPanel, setVisibleUserPanel] = useState(false);
+  const [visibleDrawer, setVisibleDrawer] = useState(false);
 
   const handleLogout = () => {
     dispatch(deleteUser());
     navigate("/login");
   };
+
+  const mobileDrawerProps = { visibleDrawer, setVisibleDrawer };
 
   return (
     <div
@@ -21,24 +25,37 @@ const Navbar = () => {
     flex justify-between items-center "
     >
       <div id="logo_brand" className=" flex items-center ">
+        <div>
+          <button
+            onClick={() => setVisibleDrawer(true)}
+            id="trigger-mobile-drawer"
+            className="mr-2 md:hidden"
+          >
+            <Menu />
+          </button>
+          {visibleDrawer && <MobileDrawer {...mobileDrawerProps} />}
+        </div>
+
         <span className="mr-2">
           <Hexagon />
         </span>
         <span className="text-xl font-semibold">E-store</span>
       </div>
       <div id="right" className="flex gap-2 justify-center  items-center">
-        <Link to="/" className="text-md hover:text-blue-600">
-          Accueil
-        </Link>
-        <a href="" className="text-md hover:text-blue-600">
-          Services
-        </a>
-        <a href="" className="text-md hover:text-blue-600">
-          Produits
-        </a>
-        <Link to="/contact" className="text-md hover:text-blue-600">
-          Contact
-        </Link>
+        <div className="hidden md:block space-x-2">
+          <Link to="/" className="text-md hover:text-blue-600">
+            Accueil
+          </Link>
+          <a href="" className="text-md hover:text-blue-600">
+            Services
+          </a>
+          <a href="" className="text-md hover:text-blue-600">
+            Produits
+          </a>
+          <Link to="/contact" className="text-md hover:text-blue-600">
+            Contact
+          </Link>
+        </div>
 
         {Object.keys(user).length == 0 ? (
           <Link to="/login">

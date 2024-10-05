@@ -33,13 +33,15 @@ const Home = () => {
           id="filter"
           className="flex justify-center items-center absolute inset-0 bg-black/60 text-white"
         >
-          <h2 className="text-4xl font-bold uppercase">Welcome to our Store</h2>
+          <h2 className="text-2xl md:text-4xl font-bold uppercase">
+            Welcome to our Store
+          </h2>
         </div>
       </section>
 
       <section id="service" className="px-6">
         <h2 className="text-center my-6 font-bold text-2xl">Services</h2>
-        <div className=" grid grid-cols-3 place-items-center">
+        <div className=" grid grid-cols-1  md:grid-cols-3 place-items-center gap-3">
           <div>
             <img src="https://picsum.photos/400/250" alt="" />
           </div>
@@ -54,7 +56,7 @@ const Home = () => {
 
       <section id="products">
         <h2 className="text-center my-6 font-bold text-2xl">Products</h2>
-        <div className=" grid grid-cols-3 place-items-center gap-4">
+        <div className=" grid grid-cols-1 md:grid-cols-3 place-items-center gap-4">
           {products.map((v) => (
             <div key={v._id}>
               <div>

@@ -15,6 +15,7 @@ import Register from "./zoneAuth/Register";
 import Dashboard from "./zoneAdmin/Dashboard";
 import ManageProducts from "./zoneAdmin/products/ManageProducts";
 import StockMovements from "./zoneAdmin/stock/StockMovements";
+import ManageUsers from "./zoneAdmin/users/ManageUsers";
 
 //Zone Client
 import Profile from "./zoneClient/pages/Profile";
@@ -37,6 +38,7 @@ function App() {
           <Route index element={<Dashboard />} />
           <Route path="gestion-produits" element={<ManageProducts />} />
           <Route path="mouvements-stock" element={<StockMovements />} />
+          <Route path="gestion-utilisateurs" element={<ManageUsers />} />
         </Route>
 
         <Route path="/user" element={<ClientLayout />}>
