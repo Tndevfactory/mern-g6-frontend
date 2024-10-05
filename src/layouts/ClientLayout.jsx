@@ -7,14 +7,14 @@ import Sidebar from "../zoneClient/components/Sidebar";
 const ClientLayout = () => {
   return (
     <div className=" h-screen flex">
-      <div id="left-part" className="bg-gray-100 border basis-[15rem]">
+      <div id="left-part" className="bg-white border-r-2 basis-[15rem]">
         <Sidebar />
       </div>
       <div id="right-part" className="flex-1">
         <div>
           <Navbar />
         </div>
-        <div>
+        <div className="p-4">
           <Outlet />
         </div>
       </div>

@@ -3,8 +3,25 @@ import vitrine from "../../assets/vitrines/vitrine4.jpg?url";
 
 import "react-toastify/dist/ReactToastify.css";
 import { useDispatch } from "react-redux";
+import { getProducts } from "../../features/product/productSlice";
 
 const Home = () => {
+  const dispatch = useDispatch();
+  const [products, setProducts] = useState([]);
+
+  const handleGetProducts = () => {
+    dispatch(getProducts())
+      .then((res) => {
+        console.log(res);
+        setProducts(res.payload.products);
+      })
+      .catch((err) => console.log(err));
+  };
+
+  useEffect(() => {
+    handleGetProducts();
+  }, []);
+
   return (
     <div>
       <section
@@ -16,10 +33,7 @@ const Home = () => {
           id="filter"
           className="flex justify-center items-center absolute inset-0 bg-black/60 text-white"
         >
-          <h2 className="text-4xl font-bold uppercase">
-            {" "}
-            Welcome to our Store
-          </h2>
+          <h2 className="text-4xl font-bold uppercase">Welcome to our Store</h2>
         </div>
       </section>
 
@@ -40,19 +54,25 @@ const Home = () => {
 
       <section id="products">
         <h2 className="text-center my-6 font-bold text-2xl">Products</h2>
-        <div className=" grid grid-cols-4 place-items-center">
-          <div>
-            <img src="https://picsum.photos/300/250" alt="" />
-          </div>
-          <div>
-            <img src="https://picsum.photos/300/251" alt="" />
-          </div>
-          <div>
-            <img src="https://picsum.photos/301/250" alt="" />
-          </div>
-          <div>
-            <img src="https://picsum.photos/302/250" alt="" />
-          </div>
+        <div className=" grid grid-cols-3 place-items-center gap-4">
+          {products.map((v) => (
+            <div key={v._id}>
+              <div>
+                <img
+                  src={import.meta.env.VITE_SERVER_URL + v.imgUrl}
+                  className="h-[20rem]"
+                  alt=""
+                />
+              </div>
+              <div className="flex justify-between p-1">
+                <span className="text-xl font-medium">{v.designation}</span>
+                <span className="text-xl font-medium text-green-600">
+                  {v.prix} DT
+                </span>
+              </div>
+              <div className="p-1 text-md"> {v.description}</div>
+            </div>
+          ))}
         </div>
       </section>
 

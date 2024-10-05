@@ -1,12 +1,12 @@
 import { Lock } from "lucide-react";
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { register } from "../features/auth/authSlice";
 import { useDispatch } from "react-redux";
 
 const Register = () => {
   const dispatch = useDispatch();
-
+  const [error, setError] = useState({});
   function validate(data) {
     //nouvelle syntaxe de fonction
     console.log(data);

@@ -2,8 +2,8 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { http } from "../api";
 
 const initialState = {
-  user: {},
-  token: "",
+  user: localStorage["user"] ? JSON.parse(localStorage.getItem("user")) : {},
+  // token: "",
 };
 
 export const login = createAsyncThunk("auth/login", async (data) => {
@@ -34,10 +34,12 @@ export const authSlice = createSlice({
   reducers: {
     setUser: (state, action) => {
       state.user = action.payload;
+      localStorage.setItem("user", JSON.stringify(action.payload));
     },
     deleteUser: (state) => {
       state.user = {};
       state.token = "";
+      localStorage.removeItem("user");
     },
   },
 });

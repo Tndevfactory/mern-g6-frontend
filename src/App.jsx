@@ -12,7 +12,9 @@ import Login from "./zoneAuth/Login";
 import Register from "./zoneAuth/Register";
 
 //Zone Admin
-import ManageProduct from "./zoneAdmin/pages/ManageProducts";
+import Dashboard from "./zoneAdmin/Dashboard";
+import ManageProducts from "./zoneAdmin/products/ManageProducts";
+import StockMovements from "./zoneAdmin/stock/StockMovements";
 
 //Zone Client
 import Profile from "./zoneClient/pages/Profile";
@@ -32,7 +34,9 @@ function App() {
         </Route>
 
         <Route path="/admin" element={<AdminLayout />}>
-          <Route index element={<ManageProduct />} />
+          <Route index element={<Dashboard />} />
+          <Route path="gestion-produits" element={<ManageProducts />} />
+          <Route path="mouvements-stock" element={<StockMovements />} />
         </Route>
 
         <Route path="/user" element={<ClientLayout />}>

@@ -1,5 +1,11 @@
 import React from "react";
-import { Settings, BarChart4, Barcode, ArrowLeftRight } from "lucide-react";
+import {
+  Settings,
+  BarChart4,
+  Barcode,
+  ArrowLeftRight,
+  Store,
+} from "lucide-react";
 import { Link } from "react-router-dom";
 
 const Sidebar = () => {
@@ -14,6 +20,10 @@ const Sidebar = () => {
       </div>
 
       <div id="admin_links">
+        <Link to="/" className="flex ml-2 mb-3">
+          <Store />
+          <span className="ml-2">Retour au store</span>
+        </Link>
         <Link to="/admin" className="flex ml-2 mb-3">
           <BarChart4 />
           <span className="ml-2">Tableau de bord</span>
@@ -23,10 +33,9 @@ const Sidebar = () => {
           <Barcode />
           <span className="ml-2">Gestion des produits</span>
         </Link>
-
-        <Link to="/admin/gestion-commandes" className=" flex ml-2 mb-3">
+        <Link to="/admin/mouvements-stock" className="flex ml-2 mb-3">
           <ArrowLeftRight />
-          <span className="ml-2">Gestion des commandes</span>
+          <span className="ml-2">Mouvements stock</span>
         </Link>
       </div>
     </div>

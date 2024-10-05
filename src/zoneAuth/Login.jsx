@@ -20,8 +20,14 @@ const Login = () => {
     dispatch(login(data))
       .then((res) => {
         console.log(res);
-        dispatch(setUser(res.payload.user));
-        navigate("/");
+        const { user } = res.payload;
+        dispatch(setUser(user));
+
+        if (user.role == "admin") {
+          navigate("/admin");
+        } else {
+          navigate("/");
+        }
       })
       .catch((err) => console.log(err));
   };

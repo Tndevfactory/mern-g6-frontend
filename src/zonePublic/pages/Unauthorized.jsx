@@ -14,12 +14,9 @@ const Unauthorized = () => {
         {" "}
         you do not have privileges to access this area
       </p>
-      <Link to="/" className="text-blue-600 hover:text-blue-700 mt-5">
-        {" "}
-        Retour à la page d'accuil
-      </Link>
+
       <button
-        onclick={() => navigate("/")}
+        onClick={() => navigate("/")}
         className="text-blue-600 hover:text-blue-700 mt-5 border border-cyan-700 p-2 rounded"
       >
         Retour à la page d'accuil {"  "}

@@ -4,14 +4,18 @@ import { Outlet } from "react-router-dom";
 import Navbar from "../zoneAdmin/components/Navbar";
 import Sidebar from "../zoneAdmin/components/Sidebar";
 import Unauthorized from "../zonePublic/pages/Unauthorized";
+import { useSelector } from "react-redux";
+import { useNavigate, Navigate } from "react-router-dom";
 
 const AdminLayout = () => {
-  //const navigate = useNavigate();
+  const { user } = useSelector((state) => state.auth);
+  const navigate = useNavigate();
+  console.log(user);
+  console.log(user.role);
 
-  const [user, setUser] = useState({
-    name: "Karim",
-    role: "admin",
-  });
+  /*  if (user && Object.keys(user).length == 0) {
+    return <Navigate to="/login" />;
+  } */
 
   if (user.role !== "admin") {
     return <Unauthorized />;
